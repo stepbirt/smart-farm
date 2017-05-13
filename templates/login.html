@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/static/css/font-awesome.css" rel="stylesheet">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Semi Smart Farm</title>
+    
+    <!-- <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x"> -->
+    <meta name="author" content="">
+    
+    <meta name="msapplication-TileColor" content="#5bc0de" />
+    <!-- <meta name="msapplication-TileImage" content="static/img/metis-tile.png" /> -->
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="static/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/smart.css">
+
+
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="static/lib/font-awesome/css/font-awesome.css">
+    
+    <!-- Metis core stylesheet -->
+    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/smart.css">
+    
+    <!-- metisMenu stylesheet -->
+    <link rel="stylesheet" href="static/lib/metismenu/metisMenu.css">
+    
+    <!-- onoffcanvas stylesheet -->
+    <link rel="stylesheet" href="static/lib/onoffcanvas/onoffcanvas.css">
+    
+    <!-- animate.css stylesheet -->
+    <link rel="stylesheet" href="static/lib/animate.css/animate.css">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="login">
+
+    <div class="form-signin">
+    <hr style="border-top: 1px solid #3f4954;">
+    <div class="text-center">
+        <div class="logo-name-login big-fonts">
+            Semi Smart Farm
+        </div>
+    </div>
+    <!-- <hr> -->
+    <div class="tab-content">
+        <div id="login" class="tab-pane active">
+            <form action="login" method="post">
+                <!-- <p class="text-muted text-center">
+                    Enter your username and password
+                </p> -->
+                <div class="form-group">
+                    <span class="icon-login-user" ><i class="fa fa-user"></i></span>
+                    <div class="input-login" >
+                        <input class="input-login-text" type="text" placeholder="ชื่อผู้ใช้"  name="username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="icon-login-pass" ><i class="fa fa-lock"></i></span>
+                    <div class="input-login" >
+                        <input class="input-login-text" type="password" placeholder="รหัสผ่าน"  name="password" style="outline: none;">
+                    </div>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">เข้าสู่ระบบ</button>
+            </form>
+        </div>
+        <!-- <div id="forgot" class="tab-pane">
+            <form action="index.html">
+                <p class="text-muted text-center">Enter your valid e-mail</p>
+                <input type="email" placeholder="mail@domain.com" class="form-control">
+                <br>
+                <button class="btn btn-lg btn-danger btn-block" type="submit">Recover Password</button>
+            </form>
+        </div> -->
+        <div id="signup" class="tab-pane">
+            <form id="fromRegis" action="regis" method="post">
+                <input type="text" placeholder="ชื่อผู้ใช้ (ใช้เข้าสู่ระบบ)" name="username" class="form-control top inputFrom tw-fonts" required>
+                <input type="email" placeholder="อีเมลล์" name="email" class="form-control middle inputFrom tw-fonts" required>
+                <input type="password" placeholder="รหัสผ่าน" name="password" class="form-control middle inputFrom tw-fonts" required>
+                <input type="password" placeholder="ยืนยันรหัสผ่าน" name="repassword" class="form-control middle inputFrom tw-fonts" required>
+
+                <input type="text" placeholder="เบอร์โทรศัพท์" name="phone" class="form-control bottom inputFrom tw-fonts" data-mask="999-999-9999" required>
+
+
+                <button class="btn btn-lg btn-success btn-block" type="submit">สมัครสมาชิก</button>
+            </form>
+        </div>
+    </div>
+    <hr style="border-top: 1px solid #3f4954;">
+    <div class="text-center">
+        <ul class="list-inline">
+            <li><a class="text-muted tw-fonts" href="#login" data-toggle="tab">เข้าสู่ระบบ</a></li>
+            <!-- <li><a class="text-muted" href="#forgot" data-toggle="tab">ลืมรหัสผ่าน</a></li> -->
+            <li><a class="text-muted tw-fonts" href="#signup" data-toggle="tab">สมัครสมาชิก</a></li>
+        </ul>
+    </div>
+  </div>
+
+
+    <!--jQuery -->
+    <script src="static/lib/jquery/jquery.js"></script>
+    <!-- <script src="static/js/smart.js"></script> -->
+    <script src="static/js/data-mask.js"></script>
+
+    <!--Bootstrap -->
+    <script src="static/lib/bootstrap/js/bootstrap.js"></script>
+
+
+    <script type="text/javascript">
+        (function($) {
+            $(document).ready(function() {
+                $('.list-inline li > a').click(function() {
+                    var activeForm = $(this).attr('href') + ' > form';
+                    //console.log(activeForm);
+                    $(activeForm).addClass('animated fadeIn');
+                    //set timer to 1 seconds, after that, unload the animate animation
+                    setTimeout(function() {
+                        $(activeForm).removeClass('animated fadeIn');
+                    }, 1000);
+                });
+            });
+        })(jQuery);
+    </script>
+</body>
+
+</html>

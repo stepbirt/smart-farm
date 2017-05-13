@@ -1,0 +1,116 @@
+{% extends "templates/layout/main.html" %}
+{%block content%}
+  <!-- <div ></div> -->
+  <div class="row placeholders">
+    <div class="col-lg-12">
+    {% if notification==[]%}
+      <div class="col-lg-6">
+        <div class="box">
+          <header>
+            <div class="icons" style="font-size: 11px !important">
+            <i class="fa fa-edit icon-table"></i></div>
+            <h5>หน้าแรก</h5>
+          </header>
+          <div class="body">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="col-lg-12 text-center" >ยังไม่มีข้อมูล</label>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      {% for data in notification %}
+        <div class="col-lg-6" >
+          <div class="box">
+            <header class="main-hover" 
+              {% if type == 'page' %} 
+                onclick="location.href='/farm/{{loop.index+((page-1)*10)}}'" 
+              {%else%}
+                onclick="location.href='/farm/{{loop.index}}'"
+              {% endif %} >
+              
+              <div class="icons" style="font-size: 11px !important">
+              <i class="fa fa-edit icon-table"></i></div>
+              {% if type == 'page'%}
+                <h5>ฟาร์มเลี้ยงที่ {{loop.index+((page-1)*10)}} ชื่อ {{content[loop.index-1].nameFarm}}</h5>
+              {% else %}
+                <h5>ฟาร์มเลี้ยงที่ {{loop.index}} ชื่อ {{content[loop.index-1].nameFarm}}</h5>
+              {% endif %}
+            </header>
+            <div class="body">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label class="control-label col-lg-6 text-right" >สถานะระบบการให้อาหาร</label>
+                  <div class="col-lg-6">
+                   {% if data.statusFeedersystem %}
+                      <div class="switch switch-on">
+                        ON
+                      </div>
+                    {% else %}
+                      <div class="switch switch-off">
+                        OFF
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-lg-6 text-right" >สถานะระบบทำความเย็น</label>
+                  <div class="col-lg-6">
+                   {% if data.statusCoolersystem %}
+                      <div class="switch switch-on">
+                        ON
+                      </div>
+                    {% else %}
+                      <div class="switch switch-off">
+                        OFF
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-lg-6 text-right" >สถานะระบบเปลี่ยนน้ำ</label>
+                  <div class="col-lg-6">
+                   {% if data.statusChangewatersystem %}
+                      <div class="switch switch-on">
+                        ON
+                      </div>
+                    {% else %}
+                      <div class="switch switch-off">
+                        OFF
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+    </div>
+    {% if notification!=[]%}
+      <ul class="pagination tw-fonts" style="float:right;">
+      {% for value in listPage%}
+        <li {% if value == page %} class="active" {% endif %} ><a href="/page/{{value}}">{{value}}</a></li>
+      {%endfor%}
+    {% endif %}
+    
+  </div>
+  <script type="text/javascript">
+    setTimeout(function(){
+      // $.post("/getnotification",function(result){
+        
+      //   // var parsedTest = result
+      //   // alert(typeof(result))
+      //   console.log(result)
+      //   console.log($.parseJSON('[["1","aaaaaa","1"],["2","bbbbbbb","2"],["3","ccccccc","3"]]'))
+      // });
+      
+      location = ''
+    },20000)
+  </script>
+
+{%endblock%}

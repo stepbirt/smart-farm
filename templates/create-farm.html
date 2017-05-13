@@ -1,0 +1,97 @@
+{% extends "templates/layout/main.html" %}
+{% block content %}
+<div class="col-lg-12"></div>
+  <div class="row placeholders">
+    <div class="col-lg-6">
+      <div class="box">
+            <header>
+                <div class="icons" style="font-size: 11px !important">
+                <i class="fa fa-edit icon-table"></i></div>
+                <h5>ฟาร์มเลี้ยงที่ {{ product_id }}</h5>
+              </header>
+
+              <div class="body">
+                <form class="form-horizontal" action="/createfarm" method="post">
+                    <div class="form-group">
+                        <label class="control-label col-lg-6">ชื่อฟาร์มเลี้ยง</label>
+
+                        <div class="col-lg-6">
+                           <input type="text" name="nameFarm" class="form-control top inputFrom" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-6">จำนวนช่องเลี้ยงต่อชั้น</label>
+
+                        <div class="col-lg-6">
+                           <input type="number" name="numberCrayfish" data-mask="99" class="form-control top inputFrom" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-6">จำนวนชั้น</label>
+
+                        <div class="col-lg-6">
+                           <select type="number" name="floor" class="form-control top inputFrom">
+                            <option value=1 > 1</option>
+                            <option value=2 > 2</option>
+                            <option value=3 > 3</option>
+                           </select>
+                        </div>
+                    </div>
+                    <!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-6">ความกว้างช่องเลี้ยง (เซนติเมตร)</label>
+
+                        <div class="col-lg-6">
+                           <input type="number" name="wide" data-mask="99" class="form-control top inputFrom" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-6">จำนวนการให้อาหารต่อวัน (ครั้ง)</label>
+
+                        <div class="col-lg-6">
+                            <select type="number" name="timeEatDay" class="form-control top inputFrom">
+                            <option value=1 > 1</option>
+                            <option value=2 > 2</option>
+                            <option value=3 > 3</option>
+                           </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-6">อุณหภูมิน้ำ (องศา)</label>
+
+                        <div class="col-lg-6">
+                              <input id="slider-right" name="temp" type="number" data-slider-min="20" data-slider-max="29"  data-slider-step="1" data-slider-value="29"/>
+                            <!-- <input type="number" name="temp" data-mask="29" class="form-control top inputFrom" required> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-6">เปลี่ยนน้ำทุก (วัน)</label>
+
+                        <div class="col-lg-6">
+                            <input type="number" name="timeWater" data-mask="99" class="form-control top inputFrom" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-6">Mac Raspberry Pi </label>
+
+                        <div class="col-lg-6">
+                            <input type="text" name="macPi" class="form-control top inputFrom" required>
+                        </div>
+                    </div>
+                    <button id="submit" class="btn btn-lg btn-success btn-block" type="submit">สร้างฟาร์ม</button>
+                </form>
+              </div>
+
+              </div>
+            </div>
+        </div>
+<script type="text/javascript">
+    $('#slider-right').slider()
+    $('#slider-right').sliderTextInput()
+    document.getElementById("submit").ondblclick = function() {
+        this.disabled = true;
+    }
+</script>
+{% endblock %}
+
